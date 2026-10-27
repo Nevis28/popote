@@ -36,6 +36,10 @@
 <footer class="footer"><span>Popote · cuisiner maison, simplement.</span><span>Prix indicatifs. Énergie/eau : ordre de grandeur. Sauvegarde locale à exporter pour changer d’appareil.</span><div class="shop-tools"><button class="btn secondary" id="export-backup">Exporter ma sauvegarde</button><button class="btn secondary" id="import-backup">Importer une sauvegarde</button><input type="file" id="backup-file" accept="application/json,.json" hidden></div></footer></div><div id="toast" class="toast hidden"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="document.getElementById('cloud-status').textContent='Erreur : la bibliothèque de connexion ne se charge pas. Vérifie le réseau ou bloqueur de contenu, puis recharge.'"></script>
 <script>
+window.addEventListener('error',function(event){const status=document.getElementById('cloud-status');if(status&&status.textContent==='Initialisation…'){status.textContent='Erreur JavaScript au démarrage de Popote. Recharge la page ; si le problème persiste, envoie-moi une capture.';}});
+window.addEventListener('unhandledrejection',function(){const status=document.getElementById('cloud-status');if(status&&status.textContent==='Initialisation…'){status.textContent='Erreur au démarrage de la connexion. Recharge la page et réessaie.';}});
+</script>
+<script>
 const SUPABASE_URL='https://thgjspxjvhsgaiydlivq.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_5OMUu-HazThvg5SZg1NW8A_XIKCrN6N';
 const cloudClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
